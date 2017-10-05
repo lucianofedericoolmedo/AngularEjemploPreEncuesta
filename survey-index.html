@@ -1,0 +1,46 @@
+<header class="row page-header">
+  <h1>
+    Prencuesta de inscripcion
+  </h1>
+  <nav>
+    <div class="btn primary medium">
+      <a href="#/new">
+        Crear una nueva
+      </a>
+    </div>
+  </nav>
+</header>
+
+<div ng-controller="SurveyListController as indexCtrl" class="row">
+  <div ng-if="indexCtrl.count == 0">
+    Todavia no existen encuestas.
+    <div class="btn default large">
+      <a href="#/new">
+        Click aca para crear una
+      </a>
+    </div>
+  </div>
+  <div ng-repeat="entry in indexCtrl.entries">
+    <h2>
+      <a ng-href="#/preview/{{ entry.id }}">{{ $index + 1 }}. {{ entry.title }}</a>
+    </h2>
+    <p>
+      Creado con 
+      <span>{{ entry.date }}</span>,
+      <span>{{ entry.fields.length }}</span>
+      campos
+    </p>
+    <nav>
+      <div class="btn primary medium">
+        <a href="#/edit/{{ entry.id }}">
+          Editar
+        </a>
+      </div>
+      <div class="btn danger medium">
+        <a href="" ng-click="indexCtrl.removeSurvey(entry)">
+          Borrar
+        </a>
+      </div>
+    </nav>
+  </div>
+</div>
